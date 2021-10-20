@@ -11,7 +11,9 @@ import {
 
 export default function App() {
   return (
-    <ScrollView style={[styles.container, { flexDirection: "row" }]}>
+    <View
+      style={[styles.container, { flexDirection: "row", flexWrap: "wrap" }]}
+    >
       <View style={styles.colorSquare}>
         <Text>1</Text>
       </View>
@@ -39,6 +41,9 @@ export default function App() {
       <View style={styles.colorSquare}>
         <Text>9</Text>
       </View>
+      {/* <View>
+        <button>push me</button>
+      </View> */}
       {/* <Text>d i v i d e r</Text>
       <Image
         source={{ uri: "https://reactjs.org/logo-og.png" }}
@@ -48,7 +53,7 @@ export default function App() {
         style={{ height: 60 }}
         placeholder="Enter text here."
       /> */}
-    </ScrollView>
+    </View>
   );
 }
 
@@ -56,11 +61,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "blue",
-    // alignItems: "center",
-    // justifyContent: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "flex-start",
     padding: 10,
-    width: 200,
-    height: 200,
+    width: 160,
+    height: 160,
   },
   colorSquare: {
     backgroundColor: "yellow",
