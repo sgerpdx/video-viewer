@@ -1,5 +1,5 @@
 // import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,8 +10,13 @@ import {
   Button,
 } from "react-native";
 // import MultiSlider from "@ptomasroos/react-native-multi-slider";
+import { Video, AVPlaybackStatus } from "expo-av";
 
 export default function App() {
+  // expo video starter code:
+  const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});
+
   return (
     <View style={styles.outerBox}>
       <View style={styles.titleRow}>
@@ -34,10 +39,31 @@ export default function App() {
       </View>
       <TextInput style={{ height: 60 }} placeholder="Select video source:" />
       <ScrollView>
-        <Image
+        <Video
+          ref={video}
+          style={styles.video}
+          source={{
+            uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+          }}
+          useNativeControls
+          resizeMode="contain"
+          isLooping
+          onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+        />
+        <View style={styles.buttons}>
+          <Button
+            title={status.isPlaying ? "Pause" : "Play"}
+            onPress={() =>
+              status.isPlaying
+                ? video.current.pauseAsync()
+                : video.current.playAsync()
+            }
+          />
+        </View>
+        {/* <Image
           source={{ uri: "https://reactjs.org/logo-og.png" }}
           style={{ width: 240, height: 240 }}
-        />
+        /> */}
         <Button
           title="Play/Pause"
           color="green"
