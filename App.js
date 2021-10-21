@@ -9,6 +9,7 @@ import {
   TextInput,
   Button,
 } from "react-native";
+// import MultiSlider from "@ptomasroos/react-native-multi-slider";
 
 export default function App() {
   return (
@@ -37,7 +38,12 @@ export default function App() {
           source={{ uri: "https://reactjs.org/logo-og.png" }}
           style={{ width: 240, height: 240 }}
         />
-        <Button title="Play/Pause" color="green" />
+        <Button
+          title="Play/Pause"
+          color="green"
+          accessibilityLabel="Play or pause the video."
+        />
+        {/* <MultiSlider min="0" max="10" step="1" /> */}
       </ScrollView>
     </View>
   );
