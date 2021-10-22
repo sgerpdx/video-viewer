@@ -1,5 +1,5 @@
 // import { StatusBar } from "expo-status-bar";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,11 +11,13 @@ import {
 } from "react-native";
 // import MultiSlider from "@ptomasroos/react-native-multi-slider";
 import { Video, AVPlaybackStatus } from "expo-av";
+import { Asset, useAssets } from "expo-asset";
 
 export default function App() {
   // expo video starter code:
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
+  const [assets, error] = useAssets(require("./assets/Meadow-July-21.mp4"));
 
   return (
     <View style={styles.outerBox}>
@@ -42,11 +44,12 @@ export default function App() {
         <Video
           ref={video}
           style={styles.video}
-          source={{
-            uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-          }}
+          source={require("./assets/Meadow-July-21.mp4")}
+          // source={{
+          //   uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+          // }}
           useNativeControls
-          resizeMode="contain"
+          resizeMode="Video.RESIZE_MODE_CONTAIN"
           isLooping
           onPlaybackStatusUpdate={(status) => setStatus(() => status)}
         />
