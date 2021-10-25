@@ -18,6 +18,9 @@ import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
 // import Video from "react-native-video";
 import { NavigationContainer } from "@react-navigation/native";
 
+// components custom for this app:
+import VideoScreen from "./src/components/VideoScreen";
+
 export default function App() {
   // expo video starter code:
   const video = React.useRef(null);
@@ -60,52 +63,7 @@ export default function App() {
         </View>
       </View>
       <TextInput style={{ height: 60 }} placeholder="Select video source:" />
-      <ScrollView>
-        {/* <Video
-          source={{
-            uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-          }}
-          ref={(ref) => {
-            this.player = ref;
-          }}
-          onBuffer={this.onBuffer}
-          onError={this.videoError}
-          style={styles.videoZone}
-        /> */}
-
-        <Video
-          ref={video}
-          style={styles.video}
-          source={require("./assets/Meadow-July-21.mp4")}
-          // source={{
-          //   uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-          // }}
-          useNativeControls
-          resizeMode="Video.RESIZE_MODE_CONTAIN"
-          isLooping
-          onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-        />
-        <View style={styles.buttons}>
-          <Button
-            title={status.isPlaying ? "Pause" : "Play"}
-            onPress={() =>
-              status.isPlaying
-                ? video.current.pauseAsync()
-                : video.current.playAsync()
-            }
-          />
-        </View>
-        {/* <Image
-          source={{ uri: "https://reactjs.org/logo-og.png" }}
-          style={{ width: 240, height: 240 }}
-        /> */}
-        <Button
-          title="Play/Pause"
-          color="green"
-          accessibilityLabel="Play or pause the video."
-        />
-        {/* <MultiSlider min="0" max="10" step="1" /> */}
-      </ScrollView>
+      <VideoScreen />
     </View>
   );
 }

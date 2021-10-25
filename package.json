@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native-stack": "^6.2.5",
     "expo": "~42.0.1",
     "expo-asset": "~8.3.3",
     "expo-av": "~9.2.3",
