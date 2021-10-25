@@ -13,65 +13,27 @@ import {
 // this is RNs native SDK video API:
 import { Video, AVPlaybackStatus } from "expo-av";
 import { Asset, useAssets } from "expo-asset";
-import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
 
-// import Video from "react-native-video";
-import { NavigationContainer } from "@react-navigation/native";
-
-export default function App() {
+export default function Video() {
   // expo video starter code:
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
   const [assets, error] = useAssets(require("./assets/Meadow-July-21.mp4"));
 
-  // material menu starter code:
-  const [visible, setVisible] = useState(false);
-  const hideMenu = () => setVisible(false);
-  const showMenu = () => setVisible(true);
-
   return (
     <View style={styles.outerBox}>
-      <View style={styles.titleRow}>
-        <Text style={styles.generalText}>Video Viewer</Text>
-        <View style={styles.iconRow}>
-          <Menu
-            visible={visible}
-            anchor={<Text onPress={showMenu}>Menu</Text>}
-            onRequestClose={hideMenu}
-          >
-            <MenuItem onPress={hideMenu}>Tutorial</MenuItem>
-            <MenuItem onPress={hideMenu}>About</MenuItem>
-            <MenuDivider />
-            <MenuItem onPress={hideMenu}>Upload</MenuItem>
-          </Menu>
-
-          <Image
-            source={{ uri: "https://reactjs.org/logo-og.png" }}
-            style={{ width: 24, height: 24 }}
-          ></Image>
-          <Image
-            source={{ uri: "https://reactjs.org/logo-og.png" }}
-            style={{ width: 24, height: 24 }}
-          ></Image>
-          <Image
-            source={{ uri: "https://reactjs.org/logo-og.png" }}
-            style={{ width: 24, height: 24 }}
-          ></Image>
-        </View>
-      </View>
-      <TextInput style={{ height: 60 }} placeholder="Select video source:" />
       <ScrollView>
         {/* <Video
-          source={{
-            uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-          }}
-          ref={(ref) => {
-            this.player = ref;
-          }}
-          onBuffer={this.onBuffer}
-          onError={this.videoError}
-          style={styles.videoZone}
-        /> */}
+            source={{
+              uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+            }}
+            ref={(ref) => {
+              this.player = ref;
+            }}
+            onBuffer={this.onBuffer}
+            onError={this.videoError}
+            style={styles.videoZone}
+          /> */}
 
         <Video
           ref={video}
@@ -96,9 +58,9 @@ export default function App() {
           />
         </View>
         {/* <Image
-          source={{ uri: "https://reactjs.org/logo-og.png" }}
-          style={{ width: 240, height: 240 }}
-        /> */}
+            source={{ uri: "https://reactjs.org/logo-og.png" }}
+            style={{ width: 240, height: 240 }}
+          /> */}
         <Button
           title="Play/Pause"
           color="green"
