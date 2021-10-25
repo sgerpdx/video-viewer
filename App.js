@@ -9,62 +9,34 @@ import {
   TextInput,
   Button,
 } from "react-native";
-// import MultiSlider from "@ptomasroos/react-native-multi-slider";
-// this is RNs native SDK video API:
-import { Video, AVPlaybackStatus } from "expo-av";
-import { Asset, useAssets } from "expo-asset";
-import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
-
-// import Video from "react-native-video";
 import { NavigationContainer } from "@react-navigation/native";
-
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // components custom for this app:
 import VideoScreen from "./src/components/VideoScreen";
+import MainScreen from "./src/containers/MainScreen";
+import About from "./src/components/About";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  // expo video starter code:
-  const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});
-  const [assets, error] = useAssets(require("./assets/Meadow-July-21.mp4"));
-
-  // material menu starter code:
-  const [visible, setVisible] = useState(false);
-  const hideMenu = () => setVisible(false);
-  const showMenu = () => setVisible(true);
-
   return (
-    <View style={styles.outerBox}>
-      <View style={styles.titleRow}>
-        <Text style={styles.generalText}>Video Viewer</Text>
-        <View style={styles.iconRow}>
-          <Menu
-            visible={visible}
-            anchor={<Text onPress={showMenu}>Menu</Text>}
-            onRequestClose={hideMenu}
-          >
-            <MenuItem onPress={hideMenu}>Tutorial</MenuItem>
-            <MenuItem onPress={hideMenu}>About</MenuItem>
-            <MenuDivider />
-            <MenuItem onPress={hideMenu}>Upload</MenuItem>
-          </Menu>
+    <NavigationContainer>
 
-          <Image
-            source={{ uri: "https://reactjs.org/logo-og.png" }}
-            style={{ width: 24, height: 24 }}
-          ></Image>
-          <Image
-            source={{ uri: "https://reactjs.org/logo-og.png" }}
-            style={{ width: 24, height: 24 }}
-          ></Image>
-          <Image
-            source={{ uri: "https://reactjs.org/logo-og.png" }}
-            style={{ width: 24, height: 24 }}
-          ></Image>
-        </View>
-      </View>
-      <TextInput style={{ height: 60 }} placeholder="Select video source:" />
-      <VideoScreen />
-    </View>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Main"
+          component={MainScreen}
+          options={{ title: "Hey" }}
+        />
+
+        <Stack.Screen
+          name="About"
+          component={About}
+          options={{ title: "Learn Something" }}
+        />
+      </Stack.Navigator>
+      <MainScreen />
+    </NavigationContainer>
   );
 }
 

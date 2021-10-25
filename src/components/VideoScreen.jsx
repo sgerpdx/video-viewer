@@ -21,9 +21,8 @@ export default function VideoScreen() {
   const [assets, error] = useAssets(require("../../assets/Meadow-July-21.mp4"));
 
   return (
-    <View style={styles.outerBox}>
-      <ScrollView>
-        {/* <Video
+    <ScrollView>
+      {/* <Video
             source={{
               uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
             }}
@@ -35,40 +34,39 @@ export default function VideoScreen() {
             style={styles.videoZone}
           /> */}
 
-        <Video
-          ref={video}
-          style={styles.video}
-          source={require("../../assets/Meadow-July-21.mp4")}
-          // source={{
-          //   uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-          // }}
-          useNativeControls
-          resizeMode="Video.RESIZE_MODE_CONTAIN"
-          isLooping
-          onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+      <Video
+        ref={video}
+        style={styles.video}
+        source={require("../../assets/Meadow-July-21.mp4")}
+        // source={{
+        //   uri: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
+        // }}
+        useNativeControls
+        resizeMode="Video.RESIZE_MODE_CONTAIN"
+        isLooping
+        onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+      />
+      <View style={styles.buttons}>
+        <Button
+          title={status.isPlaying ? "Pause" : "Play"}
+          onPress={() =>
+            status.isPlaying
+              ? video.current.pauseAsync()
+              : video.current.playAsync()
+          }
         />
-        <View style={styles.buttons}>
-          <Button
-            title={status.isPlaying ? "Pause" : "Play"}
-            onPress={() =>
-              status.isPlaying
-                ? video.current.pauseAsync()
-                : video.current.playAsync()
-            }
-          />
-        </View>
-        {/* <Image
+      </View>
+      {/* <Image
             source={{ uri: "https://reactjs.org/logo-og.png" }}
             style={{ width: 240, height: 240 }}
           /> */}
-        <Button
-          title="Play/Pause"
-          color="green"
-          accessibilityLabel="Play or pause the video."
-        />
-        {/* <MultiSlider min="0" max="10" step="1" /> */}
-      </ScrollView>
-    </View>
+      <Button
+        title="Play/Pause"
+        color="green"
+        accessibilityLabel="Play or pause the video."
+      />
+      {/* <MultiSlider min="0" max="10" step="1" /> */}
+    </ScrollView>
   );
 }
 
