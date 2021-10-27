@@ -34,7 +34,7 @@ export default function App() {
           options={{ title: "Learn Something" }}
         />
       </Stack.Navigator>
-      <MainScreen />
+      {/* <MainScreen /> */}
     </NavigationContainer>
   );
 }

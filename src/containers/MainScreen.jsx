@@ -12,6 +12,7 @@ import {
 // import MultiSlider from "@ptomasroos/react-native-multi-slider";
 import { Asset, useAssets } from "expo-asset";
 import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
+// import ModalDropdown from "react-native-modal-dropdown";
 
 // import components:
 import VideoScreen from "../components/VideoScreen";
@@ -29,27 +30,19 @@ export default function MainScreen({ navigation }) {
         <View style={styles.iconRow}>
           <Menu
             visible={visible}
-            anchor={<Text onPress={showMenu}>Menu</Text>}
+            anchor={
+              <Button
+                onPress={showMenu}
+                title="Menu"
+                color="#841584"
+                accessibilityLabel="Explore site options"
+              />
+            }
             onRequestClose={hideMenu}
           >
             <MenuItem onPress={hideMenu}>Tutorial</MenuItem>
             <MenuItem onPress={hideMenu}>About</MenuItem>
-            <MenuDivider />
-            <MenuItem onPress={hideMenu}>Upload</MenuItem>
           </Menu>
-
-          <Image
-            source={{ uri: "https://reactjs.org/logo-og.png" }}
-            style={{ width: 24, height: 24 }}
-          ></Image>
-          <Image
-            source={{ uri: "https://reactjs.org/logo-og.png" }}
-            style={{ width: 24, height: 24 }}
-          ></Image>
-          <Image
-            source={{ uri: "https://reactjs.org/logo-og.png" }}
-            style={{ width: 24, height: 24 }}
-          ></Image>
         </View>
       </View>
       <Button
@@ -91,40 +84,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     width: 120,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "blue",
-    alignItems: "center",
-    justifyContent: "center",
-    alignContent: "flex-start",
-    padding: 10,
-    width: 160,
-    height: 160,
-  },
-  colorSquare: {
-    backgroundColor: "yellow",
-    width: 40,
-    height: 40,
-    borderWidth: 4,
-    borderColor: "white",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  controlBox: {
-    flex: 1,
-    backgroundColor: "blue",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 10,
-    width: 160,
-    height: 160,
-  },
-  videoZone: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
   },
 });
