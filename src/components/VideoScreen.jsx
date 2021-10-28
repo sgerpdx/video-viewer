@@ -11,14 +11,15 @@ import {
 } from "react-native";
 // import MultiSlider from "@ptomasroos/react-native-multi-slider";
 // this is RNs native SDK video API:
-import { Video, AVPlaybackStatus } from "expo-av";
-import { Asset, useAssets } from "expo-asset";
+//
+// import { Video, AVPlaybackStatus } from "expo-av";
+// import { Asset, useAssets } from "expo-asset";
 
 export default function VideoScreen() {
   // expo video starter code:
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
-  const [assets, error] = useAssets(require("../../assets/Meadow-July-21.mp4"));
+  // const [assets, error] = useAssets(require("../../assets/Meadow-July-21.mp4"));
 
   return (
     <ScrollView>
@@ -26,17 +27,6 @@ export default function VideoScreen() {
         source={{ uri: "https://reactjs.org/logo-og.png" }}
         style={{ width: 120, height: 120 }}
       />
-
-      <View style={styles.buttons}>
-        <Button
-          title={status.isPlaying ? "Pause" : "Play"}
-          onPress={() =>
-            status.isPlaying
-              ? video.current.pauseAsync()
-              : video.current.playAsync()
-          }
-        />
-      </View>
 
       <Button
         title="Play/Pause"

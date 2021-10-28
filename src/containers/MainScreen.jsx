@@ -10,7 +10,7 @@ import {
   Button,
 } from "react-native";
 // import MultiSlider from "@ptomasroos/react-native-multi-slider";
-import { Asset, useAssets } from "expo-asset";
+// import { Asset, useAssets } from "expo-asset";
 import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
 // import ModalDropdown from "react-native-modal-dropdown";
 

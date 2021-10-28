@@ -12,7 +12,6 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // components custom for this app:
-import VideoScreen from "./src/components/VideoScreen";
 import MainScreen from "./src/containers/MainScreen";
 import About from "./src/components/About";
 
