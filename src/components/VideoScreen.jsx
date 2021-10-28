@@ -13,18 +13,24 @@ import {
 // this is RNs native SDK video API:
 //
 // import { Video, AVPlaybackStatus } from "expo-av";
-// import { Asset, useAssets } from "expo-asset";
+import { Asset, useAssets } from "expo-asset";
 
 export default function VideoScreen() {
   // expo video starter code:
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
   // const [assets, error] = useAssets(require("../../assets/Meadow-July-21.mp4"));
+  const [assets1, error1] = useAssets(
+    require("../../assets/blob-ross-triangles.jpg")
+  );
+  const [assets2, error2] = useAssets(
+    require("../../assets/blob-ross-green-planet.jpg")
+  );
 
   return (
     <ScrollView>
       <Image
-        source={{ uri: "https://reactjs.org/logo-og.png" }}
+        source={require("../../assets/blob-ross-triangles.jpg")}
         style={{ width: 120, height: 120 }}
       />
 
