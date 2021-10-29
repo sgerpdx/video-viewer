@@ -25,26 +25,7 @@ export default function MainScreen({ navigation }) {
 
   return (
     <View style={styles.outerBox}>
-      <View style={styles.titleRow}>
-        <Text style={styles.generalText}>Video Viewer</Text>
-        <View style={styles.iconRow}>
-          <Menu
-            visible={visible}
-            anchor={
-              <Button
-                onPress={showMenu}
-                title="Menu"
-                color="#841584"
-                accessibilityLabel="Explore site options"
-              />
-            }
-            onRequestClose={hideMenu}
-          >
-            <MenuItem onPress={hideMenu}>Tutorial</MenuItem>
-            <MenuItem onPress={hideMenu}>About</MenuItem>
-          </Menu>
-        </View>
-      </View>
+ 
       <Button
         title="Go to About"
         onPress={() => navigation.navigate("About")}
