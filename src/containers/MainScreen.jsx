@@ -11,21 +11,14 @@ import {
 } from "react-native";
 // import MultiSlider from "@ptomasroos/react-native-multi-slider";
 // import { Asset, useAssets } from "expo-asset";
-import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
 // import ModalDropdown from "react-native-modal-dropdown";
 
 // import components:
 import VideoScreen from "../components/VideoScreen";
 
 export default function MainScreen({ navigation }) {
-  // material menu starter code:
-  const [visible, setVisible] = useState(false);
-  const hideMenu = () => setVisible(false);
-  const showMenu = () => setVisible(true);
-
   return (
     <View style={styles.outerBox}>
- 
       <Button
         title="Go to About"
         onPress={() => navigation.navigate("About")}

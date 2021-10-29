@@ -20,12 +20,14 @@ import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  // menu starter code:
   const [visible, setVisible] = useState(false);
   const hideMenu = () => setVisible(false);
   const showMenu = () => setVisible(true);
+
   return (
-    <NavigationContainer>
-           <View style={styles.titleRow}>
+    <NavigationContainer style={styles.outerBox}>
+      <View style={styles.titleRow}>
         <Text style={styles.generalText}>Video Viewer</Text>
         <View style={styles.iconRow}>
           <Menu
