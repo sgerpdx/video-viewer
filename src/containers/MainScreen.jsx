@@ -17,6 +17,15 @@ import {
 import VideoScreen from "../components/VideoScreen";
 
 export default function MainScreen({ navigation }) {
+  const [loading, setLoading] = useState(true);
+  
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) return <Text>Loading...</Text>;
+
   return (
     <View style={styles.outerBox}>
       <Button

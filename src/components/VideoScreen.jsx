@@ -16,21 +16,47 @@ import {
 import { Asset, useAssets } from "expo-asset";
 
 export default function VideoScreen() {
+  const [videoSource, setVideoSource] = useState("");
+  const [imageBool, setImageBool] = useState(true);
+
   // expo video starter code:
-  const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});
+  const video = useRef(null);
+  const [status, setStatus] = useState({});
   // const [assets, error] = useAssets(require("../../assets/Meadow-July-21.mp4"));
-  const [assets1, error1] = useAssets(
-    require("../../assets/blob-ross-triangles.jpg")
-  );
-  const [assets2, error2] = useAssets(
-    require("../../assets/blob-ross-green-planet.jpg")
-  );
+  const [assets, error] = useAssets([
+    require("../../assets/blob-ross-triangles.jpg"),
+    require("../../assets/blob-ross-green-planet.jpg"),
+  ]);
+
+  const videoSelection = (vid) => {
+    setVideoSource(vid);
+    setImageBool(false);
+  };
+
+  useEffect(() => {
+    setVideoSource("../../assets/blob-ross-triangles.jpg");
+  }, []);
+
+  console.log("video source:", videoSource);
 
   return (
     <ScrollView>
+      <Text>Please select video source:</Text>
+      <Button
+        title="Select"
+        color="yellow"
+        accessibilityLabel="Select video source."
+        onPress={() =>
+          videoSelection("../../assets/blob-ross-green-planet.jpg")
+        }
+      />
       <Image
-        source={require("../../assets/blob-ross-triangles.jpg")}
+        //this following line needs to be fixed to conform to require syntax, but it is unclear why the current state-management system does not work that way:
+        source={
+          imageBool
+            ? require("../../assets/blob-ross-triangles.jpg")
+            : require("../../assets/blob-ross-green-planet.jpg")
+        }
         style={{ width: 120, height: 120 }}
       />
 
