@@ -51,7 +51,6 @@ export default function VideoScreen() {
         }
       />
       <Image
-        //this following line needs to be fixed to conform to require syntax, but it is unclear why the current state-management system does not work that way:
         source={
           imageBool
             ? require("../../assets/blob-ross-triangles.jpg")
