@@ -1,23 +1,20 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Image,
-  TextInput,
-  Button,
-} from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
+
+// RN screen navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// components custom for this app:
+
+// my components for this app:
 import MainScreen from "./src/containers/MainScreen";
 import About from "./src/components/About";
-// Menu
+
+// menu
 import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
 
 const Stack = createNativeStackNavigator();
+// at present the screen navigation using buttons in the MainScreen and About components is not working with the reason unknown
 
 export default function App() {
   // menu starter code:
@@ -60,7 +57,6 @@ export default function App() {
           options={{ title: "Learn Something" }}
         />
       </Stack.Navigator>
-      {/* <MainScreen /> */}
     </NavigationContainer>
   );
 }

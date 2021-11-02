@@ -1,28 +1,21 @@
-// import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState, useRef } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Image,
-  TextInput,
-  Button,
-} from "react-native";
-// import MultiSlider from "@ptomasroos/react-native-multi-slider";
-// this is RNs native SDK video API:
-//
+import { StyleSheet, Text, ScrollView, Image, Button } from "react-native";
+
 // import { Video, AVPlaybackStatus } from "expo-av";
 import { Asset, useAssets } from "expo-asset";
 
 export default function VideoScreen() {
+  // this variable is not working as intended to toggle asset:
   const [videoSource, setVideoSource] = useState("");
+
+  // ...so a Boolean is being used for testing purposes:
   const [imageBool, setImageBool] = useState(true);
 
   // expo video starter code:
   const video = useRef(null);
   const [status, setStatus] = useState({});
-  // const [assets, error] = useAssets(require("../../assets/Meadow-July-21.mp4"));
+
+  // static assets import -- using images instead of videos to test non-playback functionality of app:
   const [assets, error] = useAssets([
     require("../../assets/blob-ross-triangles.jpg"),
     require("../../assets/blob-ross-green-planet.jpg"),
@@ -33,6 +26,7 @@ export default function VideoScreen() {
     setImageBool(false);
   };
 
+  // this is changing state, but there are issues using state to change the image source below
   useEffect(() => {
     setVideoSource("../../assets/blob-ross-triangles.jpg");
   }, []);
@@ -40,7 +34,7 @@ export default function VideoScreen() {
   console.log("video source:", videoSource);
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.videoZone}>
       <Text>Please select video source:</Text>
       <Button
         title="Select"

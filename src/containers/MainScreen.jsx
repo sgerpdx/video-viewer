@@ -1,24 +1,15 @@
-// import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState, useRef } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Image,
-  TextInput,
-  Button,
-} from "react-native";
+import { StyleSheet, Text, View, TextInput, Button } from "react-native";
+
+// components to use once basic functionality is established:
 // import MultiSlider from "@ptomasroos/react-native-multi-slider";
-// import { Asset, useAssets } from "expo-asset";
 // import ModalDropdown from "react-native-modal-dropdown";
 
-// import components:
+// import my components:
 import VideoScreen from "../components/VideoScreen";
 
 export default function MainScreen({ navigation }) {
   const [loading, setLoading] = useState(true);
-  
 
   useEffect(() => {
     setLoading(false);
@@ -48,24 +39,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: 420,
     height: 720,
-  },
-  titleRow: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: 320,
-    height: 120,
-  },
-  generalText: {
-    color: "white",
-    fontWeight: "bold",
-  },
-  iconRow: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-end",
-    width: 120,
   },
 });

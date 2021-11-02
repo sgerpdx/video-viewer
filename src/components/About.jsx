@@ -27,8 +27,4 @@ const styles = StyleSheet.create({
     width: 420,
     height: 720,
   },
-  generalText: {
-    color: "white",
-    fontWeight: "bold",
-  },
 });
