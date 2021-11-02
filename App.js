@@ -1,6 +1,6 @@
 // import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, ScrollView } from "react-native";
 
 // RN screen navigation
 import { NavigationContainer } from "@react-navigation/native";
@@ -16,47 +16,53 @@ import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
 const Stack = createNativeStackNavigator();
 // at present the screen navigation using buttons in the MainScreen and About components is not working with the reason unknown
 
-export default function App() {
+export default function App(navigation) {
   // menu starter code:
   const [visible, setVisible] = useState(false);
-  const hideMenu = () => setVisible(false);
+  const hideMenu = () => {
+    setVisible(false);
+  };
   const showMenu = () => setVisible(true);
 
   return (
-    <NavigationContainer style={styles.outerBox}>
-      <View style={styles.titleRow}>
-        <Text style={styles.generalText}>Video Viewer</Text>
-        <View style={styles.iconRow}>
-          <Menu
-            visible={visible}
-            anchor={
-              <Button
-                onPress={showMenu}
-                title="Menu"
-                color="#841584"
-                accessibilityLabel="Explore site options"
-              />
-            }
-            onRequestClose={hideMenu}
-          >
-            <MenuItem onPress={hideMenu}>Tutorial</MenuItem>
-            <MenuItem onPress={hideMenu}>About</MenuItem>
-          </Menu>
+    <NavigationContainer>
+      <View style={styles.outerBox}>
+        <View style={styles.titleRow}>
+          <Text style={styles.generalText}>Video Viewer</Text>
+          <View style={styles.iconRow}>
+            <Menu
+              visible={visible}
+              anchor={
+                <Button
+                  onPress={showMenu}
+                  title="Menu"
+                  color="#841584"
+                  accessibilityLabel="Explore site options"
+                />
+              }
+              onRequestClose={hideMenu}
+            >
+              <MenuItem onPress={hideMenu}>Tutorial</MenuItem>
+              <MenuItem onPress={hideMenu}>About</MenuItem>
+            </Menu>
+          </View>
+        </View>
+        <View style={styles.contentBox}>
+          {/* <MainScreen /> */}
+          <Stack.Navigator>
+            <Stack.Screen
+              name="About"
+              component={About}
+              options={{ title: "Worrrd" }}
+            />
+            <Stack.Screen
+              name="Main"
+              component={MainScreen}
+              options={{ title: "Learrrn" }}
+            />
+          </Stack.Navigator>
         </View>
       </View>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Main"
-          component={MainScreen}
-          options={{ title: "Hey" }}
-        />
-
-        <Stack.Screen
-          name="About"
-          component={About}
-          options={{ title: "Learn Something" }}
-        />
-      </Stack.Navigator>
     </NavigationContainer>
   );
 }
@@ -68,7 +74,7 @@ const styles = StyleSheet.create({
     backgroundColor: "blue",
     color: "white",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     width: 420,
     height: 720,
   },
@@ -90,5 +96,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     width: 120,
+  },
+  contentBox: {
+    flex: 3,
+    flexDirection: "column",
+    width: 320,
+    height: 680,
   },
 });

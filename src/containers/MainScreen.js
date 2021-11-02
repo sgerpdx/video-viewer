@@ -7,37 +7,38 @@ import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 
 // import my components:
 import VideoScreen from "../components/VideoScreen";
+import About from "../components/About";
 
 export default function MainScreen({ navigation }) {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(false);
-  }, []);
+  // useEffect(() => {
+  //   setLoading(false);
+  // }, []);
 
-  if (loading) return <Text>Loading...</Text>;
+  // if (loading) return <Text>Loading...</Text>;
 
   return (
-    <View style={styles.outerBox}>
+    <View style={styles.mainBox}>
       <Button
         title="Go to About"
         onPress={() => navigation.navigate("About")}
       />
       <TextInput style={{ height: 60 }} placeholder="Select video source:" />
-      <VideoScreen />
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  outerBox: {
+  mainBox: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "blue",
+    backgroundColor: "orange",
     color: "white",
     alignItems: "center",
     justifyContent: "center",
-    width: 420,
-    height: 720,
+    width: 360,
+    height: 680,
   },
 });
