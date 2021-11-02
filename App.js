@@ -48,7 +48,6 @@ export default function App(navigation) {
           </View>
         </View>
         <View style={styles.contentBox}>
-          {/* <MainScreen /> */}
           <Stack.Navigator>
             <Stack.Screen name="Main" component={MainScreen} />
             <Stack.Screen name="About" component={About} />

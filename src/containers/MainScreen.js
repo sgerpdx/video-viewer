@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 
 // components to use once basic functionality is established:
 // import MultiSlider from "@ptomasroos/react-native-multi-slider";
-// import ModalDropdown from "react-native-modal-dropdown";
+import ModalDropdown from "react-native-modal-dropdown";
 
 // import my components:
 import VideoScreen from "../components/VideoScreen";
@@ -28,6 +28,10 @@ export default function MainScreen({ navigation }) {
       <TextInput
         style={[styles.flexThing, { height: 60 }]}
         placeholder="Select video source:"
+      />
+      <ModalDropdown
+        defaultValue={"Raven"}
+        options={["option 1", "option 2"]}
       />
       <VideoScreen style={styles.flexThing} />
     </View>
