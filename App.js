@@ -1,51 +1,63 @@
 // import { StatusBar } from "expo-status-bar";
-import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Image,
-  TextInput,
-  Button,
-} from "react-native";
-// import MultiSlider from "@ptomasroos/react-native-multi-slider";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, Button } from "react-native";
+
+// RN screen navigation
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+// my components for this app:
+import MainScreen from "./src/containers/MainScreen";
+import About from "./src/components/About";
+
+// menu
+import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
+
+const Stack = createNativeStackNavigator();
+// at present the screen navigation using buttons in the MainScreen and About components is not working with the reason unknown
 
 export default function App() {
+  // menu starter code:
+  const [visible, setVisible] = useState(false);
+  const hideMenu = () => setVisible(false);
+  const showMenu = () => setVisible(true);
+
   return (
-    <View style={styles.outerBox}>
+    <NavigationContainer style={styles.outerBox}>
       <View style={styles.titleRow}>
         <Text style={styles.generalText}>Video Viewer</Text>
         <View style={styles.iconRow}>
-          {" "}
-          <Image
-            source={{ uri: "https://reactjs.org/logo-og.png" }}
-            style={{ width: 24, height: 24 }}
-          ></Image>
-          <Image
-            source={{ uri: "https://reactjs.org/logo-og.png" }}
-            style={{ width: 24, height: 24 }}
-          ></Image>
-          <Image
-            source={{ uri: "https://reactjs.org/logo-og.png" }}
-            style={{ width: 24, height: 24 }}
-          ></Image>
+          <Menu
+            visible={visible}
+            anchor={
+              <Button
+                onPress={showMenu}
+                title="Menu"
+                color="#841584"
+                accessibilityLabel="Explore site options"
+              />
+            }
+            onRequestClose={hideMenu}
+          >
+            <MenuItem onPress={hideMenu}>Tutorial</MenuItem>
+            <MenuItem onPress={hideMenu}>About</MenuItem>
+          </Menu>
         </View>
       </View>
-      <TextInput style={{ height: 60 }} placeholder="Select video source:" />
-      <ScrollView>
-        <Image
-          source={{ uri: "https://reactjs.org/logo-og.png" }}
-          style={{ width: 240, height: 240 }}
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Main"
+          component={MainScreen}
+          options={{ title: "Hey" }}
         />
-        <Button
-          title="Play/Pause"
-          color="green"
-          accessibilityLabel="Play or pause the video."
+
+        <Stack.Screen
+          name="About"
+          component={About}
+          options={{ title: "Learn Something" }}
         />
-        {/* <MultiSlider min="0" max="10" step="1" /> */}
-      </ScrollView>
-    </View>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -57,7 +69,7 @@ const styles = StyleSheet.create({
     color: "white",
     alignItems: "center",
     justifyContent: "center",
-    width: 360,
+    width: 420,
     height: 720,
   },
   titleRow: {
@@ -78,33 +90,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-end",
     width: 120,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "blue",
-    alignItems: "center",
-    justifyContent: "center",
-    alignContent: "flex-start",
-    padding: 10,
-    width: 160,
-    height: 160,
-  },
-  colorSquare: {
-    backgroundColor: "yellow",
-    width: 40,
-    height: 40,
-    borderWidth: 4,
-    borderColor: "white",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  controlBox: {
-    flex: 1,
-    backgroundColor: "blue",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 10,
-    width: 160,
-    height: 160,
   },
 });
