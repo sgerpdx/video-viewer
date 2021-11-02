@@ -21,11 +21,15 @@ export default function MainScreen({ navigation }) {
   return (
     <View style={styles.mainBox}>
       <Button
+        style={styles.flexThing}
         title="Go to About"
         onPress={() => navigation.navigate("About")}
       />
-      <TextInput style={{ height: 60 }} placeholder="Select video source:" />
-
+      <TextInput
+        style={[styles.flexThing, { height: 60 }]}
+        placeholder="Select video source:"
+      />
+      <VideoScreen style={styles.flexThing} />
     </View>
   );
 }
@@ -37,8 +41,11 @@ const styles = StyleSheet.create({
     backgroundColor: "orange",
     color: "white",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     width: 360,
     height: 680,
+  },
+  flexThing: {
+    flex: 1,
   },
 });

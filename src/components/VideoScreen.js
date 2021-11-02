@@ -34,7 +34,7 @@ export default function VideoScreen() {
   console.log("video source:", videoSource);
 
   return (
-    <ScrollView style={styles.videoZone}>
+    <ScrollView>
       <Text>Please select video source:</Text>
       <Button
         title="Select"
@@ -62,12 +62,13 @@ export default function VideoScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  videoZone: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-  },
-});
+// this formatting was causing the component to be in front of other components:
+// const styles = StyleSheet.create({
+//   videoZone: {
+//     position: "absolute",
+//     top: 0,
+//     left: 0,
+//     bottom: 0,
+//     right: 0,
+//   },
+// });

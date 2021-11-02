@@ -50,16 +50,8 @@ export default function App(navigation) {
         <View style={styles.contentBox}>
           {/* <MainScreen /> */}
           <Stack.Navigator>
-            <Stack.Screen
-              name="About"
-              component={About}
-              options={{ title: "Worrrd" }}
-            />
-            <Stack.Screen
-              name="Main"
-              component={MainScreen}
-              options={{ title: "Learrrn" }}
-            />
+            <Stack.Screen name="Main" component={MainScreen} />
+            <Stack.Screen name="About" component={About} />
           </Stack.Navigator>
         </View>
       </View>
