@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor: "blue",
     color: "white",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "center",
     width: 420,
     height: 720,
   },
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
   generalText: {
     color: "white",
     fontWeight: "bold",
+    fontSize: 24,
   },
   iconRow: {
     flex: 1,
@@ -89,9 +90,8 @@ const styles = StyleSheet.create({
     width: 120,
   },
   contentBox: {
-    flex: 3,
-    flexDirection: "column",
-    width: 320,
+    flex: 5,
+    width: 360,
     height: 680,
   },
 });
