@@ -4,7 +4,7 @@ import { StyleSheet, Text, ScrollView, Image, Button } from "react-native";
 // import { Video, AVPlaybackStatus } from "expo-av";
 import { Asset, useAssets } from "expo-asset";
 
-export default function VideoScreen() {
+export default function VideoScreen(imageSource) {
   // this variable is not working as intended to toggle asset:
   const [videoSource, setVideoSource] = useState("");
 
@@ -32,6 +32,7 @@ export default function VideoScreen() {
   }, []);
 
   console.log("video source:", videoSource);
+  console.log("propped up SAWRSSS:", imageSource);
 
   return (
     <ScrollView>

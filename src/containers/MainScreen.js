@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 
 // components to use once basic functionality is established:
-// import MultiSlider from "@ptomasroos/react-native-multi-slider";
 import ModalDropdown from "react-native-modal-dropdown";
 
 // import my components:
@@ -10,13 +9,22 @@ import VideoScreen from "../components/VideoScreen";
 import About from "../components/About";
 
 export default function MainScreen({ navigation }) {
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [imageSource, setImageSource] = useState("");
 
-  // useEffect(() => {
-  //   setLoading(false);
-  // }, []);
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
-  // if (loading) return <Text>Loading...</Text>;
+  const optionsArr = ["triangles", "green planet"];
+
+  const imageToggle = (e) => {
+    setImageSource(optionsArr[e]);
+  };
+
+  console.log("imgSRC:", imageSource);
+
+  if (loading) return <Text>Loading...</Text>;
 
   return (
     <View style={styles.mainBox}>
@@ -30,10 +38,11 @@ export default function MainScreen({ navigation }) {
         placeholder="Select video source:"
       />
       <ModalDropdown
-        defaultValue={"Raven"}
-        options={["option 1", "option 2"]}
+        defaultValue={"select video source"}
+        onSelect={imageToggle}
+        options={optionsArr}
       />
-      <VideoScreen style={styles.flexThing} />
+      <VideoScreen style={styles.flexThing} picture={imageSource} />
     </View>
   );
 }
