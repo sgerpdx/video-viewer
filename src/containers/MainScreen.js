@@ -11,6 +11,7 @@ import About from "../components/About";
 export default function MainScreen({ navigation }) {
   const [loading, setLoading] = useState(true);
   const [imageSource, setImageSource] = useState("");
+  const [tracker, setTracker] = useState(0);
 
   useEffect(() => {
     setLoading(false);
@@ -20,9 +21,11 @@ export default function MainScreen({ navigation }) {
 
   const imageToggle = (e) => {
     setImageSource(optionsArr[e]);
+    setTracker((tracker) => tracker + 1);
   };
 
   console.log("imgSRC:", imageSource);
+  console.log("TRK:", tracker);
 
   if (loading) return <Text>Loading...</Text>;
 
@@ -42,7 +45,11 @@ export default function MainScreen({ navigation }) {
         onSelect={imageToggle}
         options={optionsArr}
       />
-      <VideoScreen style={styles.flexThing} picture={imageSource} />
+      <VideoScreen
+        style={styles.flexThing}
+        painting={imageSource}
+        count={tracker}
+      />
     </View>
   );
 }

@@ -4,7 +4,8 @@ import { StyleSheet, Text, ScrollView, Image, Button } from "react-native";
 // import { Video, AVPlaybackStatus } from "expo-av";
 import { Asset, useAssets } from "expo-asset";
 
-export default function VideoScreen(imageSource) {
+export default function VideoScreen({ painting, count }) {
+  const [loading, setLoading] = useState(true);
   // this variable is not working as intended to toggle asset:
   const [videoSource, setVideoSource] = useState("");
 
@@ -29,10 +30,13 @@ export default function VideoScreen(imageSource) {
   // this is changing state, but there are issues using state to change the image source below
   useEffect(() => {
     setVideoSource("../../assets/blob-ross-triangles.jpg");
+    setLoading(false);
   }, []);
 
   console.log("video source:", videoSource);
-  console.log("propped up SAWRSSS:", imageSource);
+  console.log("propped up SAWRSSS:", { painting });
+
+  if (loading) return <Text>Loading...</Text>;
 
   return (
     <ScrollView>
@@ -53,7 +57,6 @@ export default function VideoScreen(imageSource) {
         }
         style={{ width: 120, height: 120 }}
       />
-
       <Button
         title="Play/Pause"
         color="green"
