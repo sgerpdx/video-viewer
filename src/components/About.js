@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 
 export default function About({ navigation }) {
   return (
-    <View style={styles.outerBox}>
+    <View style={styles.aboutBox}>
       <Text>
         This app was created to experiment with video presentation and settings
         on mobile devices.
@@ -17,14 +17,14 @@ export default function About({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  outerBox: {
+  aboutBox: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "blue",
+    backgroundColor: "green",
     color: "white",
     alignItems: "center",
-    justifyContent: "center",
-    width: 420,
-    height: 720,
+    justifyContent: "flex-start",
+    width: 360,
+    height: 680,
   },
 });

@@ -48,7 +48,11 @@ export default function App(navigation) {
           </View>
         </View>
         <View style={styles.contentBox}>
-          <Stack.Navigator>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
             <Stack.Screen name="Main" component={MainScreen} />
             <Stack.Screen name="About" component={About} />
           </Stack.Navigator>
@@ -62,7 +66,7 @@ const styles = StyleSheet.create({
   outerBox: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "blue",
+    backgroundColor: "rgba(51,86,166,255)",
     color: "white",
     alignItems: "center",
     justifyContent: "center",
