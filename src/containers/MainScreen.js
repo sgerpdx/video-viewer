@@ -46,7 +46,7 @@ export default function MainScreen({ navigation }) {
         options={optionsArr}
       />
       <VideoScreen
-        style={styles.flexThing}
+        style={styles.videoBox}
         painting={imageSource}
         count={tracker}
       />
@@ -67,5 +67,11 @@ const styles = StyleSheet.create({
   },
   flexThing: {
     flex: 1,
+    width: 240,
+  },
+  videoBox: {
+    flex: 4,
+    position: "relative",
+    width: 360,
   },
 });

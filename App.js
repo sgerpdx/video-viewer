@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // my components for this app:
 import MainScreen from "./src/containers/MainScreen";
 import About from "./src/components/About";
+import MonoStyle from "./src/containers/MonoStyle";
 
 // menu
 import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
@@ -27,7 +28,7 @@ export default function App(navigation) {
   return (
     <NavigationContainer>
       <View style={styles.outerBox}>
-        <View style={styles.titleRow}>
+        <View style={styles.titleBox}>
           <Text style={styles.generalText}>Video Viewer</Text>
           <View style={styles.iconRow}>
             <Menu
@@ -47,7 +48,8 @@ export default function App(navigation) {
             </Menu>
           </View>
         </View>
-        <View style={styles.contentBox}>
+        <MonoStyle />
+        {/* <View style={styles.contentBox}>
           <Stack.Navigator
             screenOptions={{
               headerShown: false,
@@ -56,7 +58,7 @@ export default function App(navigation) {
             <Stack.Screen name="Main" component={MainScreen} />
             <Stack.Screen name="About" component={About} />
           </Stack.Navigator>
-        </View>
+        </View> */}
       </View>
     </NavigationContainer>
   );
@@ -66,36 +68,29 @@ const styles = StyleSheet.create({
   outerBox: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "rgba(51,86,166,255)",
-    color: "white",
-    alignItems: "center",
+    backgroundColor: "blue",
+    color: "black",
     justifyContent: "center",
-    width: 420,
-    height: 720,
-  },
-  titleRow: {
-    flex: 1,
-    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    width: 320,
-    height: 120,
+    width: 540,
   },
-  generalText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 24,
-  },
-  iconRow: {
-    flex: 1,
+  titleBox: {
     flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
-    justifyContent: "flex-end",
-    width: 120,
+    width: 480,
   },
-  contentBox: {
-    flex: 5,
-    width: 360,
-    height: 680,
+  nameBox: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    width: 240,
+  },
+  iconBox: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 240,
   },
 });

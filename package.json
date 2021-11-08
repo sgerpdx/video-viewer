@@ -16,7 +16,6 @@
     ]
   },
   "dependencies": {
-    "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "@types/jest": "^27.0.2",
